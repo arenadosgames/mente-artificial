@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Código Master | 1001 Métodos para Ganhar Dinheiro com IA</title>
+  <meta name="description" content="Descubra 1001 métodos para ganhar dinheiro com Inteligência Artificial. E-book completo com mais de 1300 páginas de estratégias práticas para criar renda online com IA." />
+  <meta name="keywords" content="ganhar dinheiro com IA, inteligência artificial, renda online, e-book IA, métodos ganhar dinheiro" />
+  <meta property="og:title" content="O Código Master | 1001 Métodos para Ganhar Dinheiro com IA" />
+  <meta property="og:description" content="Mais de 1001 estratégias para transformar a Inteligência Artificial em renda. E-book com 1300+ páginas por apenas R$ 29,90." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black:    #0B0B0B;
+      --black2:   #111111;
+      --black3:   #161616;
+      --neon:     #00C8FF;
+      --neon-dim: #00C8FF33;
+      --gold:     #FFD700;
+      --gold-dim: #FFD70022;
+      --white:    #FFFFFF;
+      --gray:     #8A8A8A;
+      --gray-light: #B0B0B0;
+      --font-display: 'Orbitron', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --radius: 16px;
+      --radius-sm: 8px;
+      --glow-neon: 0 0 20px #00C8FF66, 0 0 60px #00C8FF22;
+      --glow-gold: 0 0 20px #FFD70066, 0 0 60px #FFD70022;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--neon); color: var(--black); }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--black2); }
+    ::-webkit-scrollbar-thumb { background: var(--neon); border-radius: 3px; }
+
+    /* ── UTILITIES ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .text-neon  { color: var(--neon); }
+    .text-gold  { color: var(--gold); }
+    .text-gray  { color: var(--gray-light); }
+
+    /* ── ANIMATED BG GRID ── */
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(0,200,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+    }
+    @keyframes gridMove { 0%{background-position:0 0;} 100%{background-position:60px 60px;} }
+
+    /* ── PARTICLES ── */
+    .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .particle {
+      position: absolute; width: 2px; height: 2px; background: var(--neon);
+      border-radius: 50%; opacity: 0;
+      animation: floatUp var(--dur, 8s) linear var(--delay, 0s) infinite;
+    }
+    @keyframes floatUp {
+      0%  { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.3; }
+      100%{ transform: translateY(-100px) translateX(var(--drift, 30px)); opacity: 0; }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 0;
+      background: rgba(11,11,11,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,200,255,0.15);
+      transition: all 0.3s;
+    }
+    nav .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 18px; font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+    .nav-logo span { color: var(--neon); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--neon), #0088BB);
+      color: var(--black); font-weight: 700; font-size: 13px;
+      padding: 10px 24px; border-radius: 50px; border: none; cursor: pointer;
+      text-decoration: none; letter-spacing: 0.5px;
+      transition: all 0.3s; white-space: nowrap;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: var(--glow-neon); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-glow-left {
+      position: absolute; left: -200px; top: 50%; transform: translateY(-50%);
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,200,255,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-glow-right {
+      position: absolute; right: -200px; top: 30%;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,215,0,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,215,0,0.1);
+      border: 1px solid rgba(255,215,0,0.3);
+      color: var(--gold); font-size: 13px; font-weight: 600;
+      padding: 8px 18px; border-radius: 50px;
+      margin-bottom: 28px;
+      animation: pulse-gold 2s ease-in-out infinite;
+    }
+    @keyframes pulse-gold {
+      0%,100%{ box-shadow: 0 0 0 0 rgba(255,215,0,0.3); }
+      50%    { box-shadow: 0 0 0 8px rgba(255,215,0,0); }
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5vw, 68px);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+    .hero-title .line2 {
+      background: linear-gradient(135deg, var(--neon), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 22px);
+      color: var(--neon); font-weight: 500;
+      margin-bottom: 20px; letter-spacing: 0.3px;
+    }
+    .hero-desc {
+      color: var(--gray-light); font-size: 17px; line-height: 1.7;
+      margin-bottom: 36px; max-width: 520px;
+    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--neon) 0%, #0088BB 100%);
+      color: var(--black); font-weight: 800; font-size: 15px;
+      padding: 18px 36px; border-radius: 50px; border: none; cursor: pointer;
+      text-decoration: none; letter-spacing: 0.5px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 30px rgba(0,200,255,0.35);
+      display: inline-block; text-align: center;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(0,200,255,0.5); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white); font-weight: 600; font-size: 15px;
+      padding: 17px 32px; border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.25); cursor: pointer;
+      text-decoration: none; letter-spacing: 0.5px;
+      transition: all 0.3s; display: inline-block; text-align: center;
+    }
+    .btn-secondary:hover {
+      border-color: var(--neon); color: var(--neon);
+      box-shadow: 0 0 20px rgba(0,200,255,0.2);
+      transform: translateY(-3px);
+    }
+    .hero-stats {
+      display: flex; gap: 32px; flex-wrap: wrap;
+    }
+    .stat-item { display: flex; flex-direction: column; }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 28px; font-weight: 700; color: var(--neon);
+    }
+    .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ── BOOK MOCKUP ── */
+    .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+    .book-wrapper {
+      position: relative;
+      animation: floatBook 4s ease-in-out infinite;
+    }
+    @keyframes floatBook {
+      0%,100%{ transform: translateY(0) rotateY(-8deg); }
+      50%    { transform: translateY(-20px) rotateY(-5deg); }
+    }
+    .book-cover {
+      width: 280px; height: 380px; border-radius: 8px 16px 16px 8px;
+      position: relative; overflow: hidden;
+      box-shadow:
+        -10px 10px 40px rgba(0,0,0,0.6),
+        0 0 60px rgba(0,200,255,0.2),
+        0 0 120px rgba(0,200,255,0.08);
+      transform-style: preserve-3d;
+    }
+    .book-cover-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(145deg, #0a0a1a 0%, #0d1a2e 40%, #061020 100%);
+    }
+    .book-cover-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,255,0.06) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .book-cover-glow {
+      position: absolute; top: -40%; left: -20%;
+      width: 150%; height: 80%;
+      background: radial-gradient(ellipse, rgba(0,200,255,0.15), transparent 60%);
+    }
+    .book-cover-content {
+      position: absolute; inset: 0; padding: 28px 24px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .book-eyebrow {
+      font-size: 8px; letter-spacing: 3px; color: var(--neon);
+      font-family: var(--font-display); text-transform: uppercase; opacity: 0.8;
+    }
+    .book-main-title {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 900; line-height: 1.1;
+      color: var(--white);
+      text-shadow: 0 0 30px rgba(0,200,255,0.5);
+    }
+    .book-main-title .highlight { color: var(--neon); }
+    .book-subtitle-cover {
+      font-size: 9px; color: rgba(255,255,255,0.6); line-height: 1.4;
+      letter-spacing: 0.5px; margin-top: 6px;
+    }
+    .book-brain {
+      font-size: 56px; text-align: center;
+      filter: drop-shadow(0 0 20px rgba(0,200,255,0.6));
+      margin: 12px 0;
+      animation: brainPulse 3s ease-in-out infinite;
+    }
+    @keyframes brainPulse {
+      0%,100%{ filter: drop-shadow(0 0 20px rgba(0,200,255,0.6)); }
+      50%    { filter: drop-shadow(0 0 40px rgba(0,200,255,1)) drop-shadow(0 0 80px rgba(0,200,255,0.4)); }
+    }
+    .book-bottom-info { display: flex; justify-content: space-between; align-items: flex-end; }
+    .book-pages { font-size: 8px; color: rgba(255,255,255,0.4); letter-spacing: 1px; }
+    .book-price-badge {
+      background: var(--gold); color: var(--black);
+      font-family: var(--font-display); font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 4px;
+    }
+    .book-spine {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 16px;
+      background: linear-gradient(90deg, #001520, #003050);
+      border-radius: 8px 0 0 8px;
+      border-right: 1px solid rgba(0,200,255,0.3);
+    }
+    .book-glow-orbit {
+      position: absolute; inset: -40px; border-radius: 50%;
+      border: 1px solid rgba(0,200,255,0.15);
+      animation: orbit 8s linear infinite;
+    }
+    .book-glow-orbit::after {
+      content: ''; position: absolute; top: -4px; left: 50%;
+      width: 8px; height: 8px; background: var(--neon);
+      border-radius: 50%; box-shadow: var(--glow-neon);
+      transform: translateX(-50%);
+    }
+    @keyframes orbit { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+    /* ── SECTION HEADER ── */
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-eyebrow {
+      font-size: 12px; font-family: var(--font-display);
+      letter-spacing: 3px; color: var(--neon); text-transform: uppercase;
+      margin-bottom: 16px; opacity: 0.8;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .section-desc { color: var(--gray-light); font-size: 17px; max-width: 620px; margin: 0 auto; line-height: 1.7; }
+    .title-underline {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--neon), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── BENEFITS ── */
+    #benefits { background: linear-gradient(180deg, var(--black) 0%, var(--black2) 100%); position: relative; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .benefit-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,200,255,0.12);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+    .benefit-card:hover {
+      border-color: rgba(0,200,255,0.4);
+      background: rgba(0,200,255,0.05);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(0,200,255,0.1);
+    }
+    .benefit-icon {
+      font-size: 28px; flex-shrink: 0;
+      width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,200,255,0.08);
+      border: 1px solid rgba(0,200,255,0.2);
+      border-radius: 12px;
+    }
+    .benefit-text h4 {
+      font-weight: 700; font-size: 16px; margin-bottom: 6px; color: var(--white);
+    }
+    .benefit-text p { color: var(--gray-light); font-size: 14px; line-height: 1.5; }
+
+    /* ── LEARN ── */
+    #learn { background: var(--black3); position: relative; overflow: hidden; }
+    .learn-bg-circle {
+      position: absolute; right: -200px; bottom: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,215,0,0.05), transparent 70%);
+      pointer-events: none;
+    }
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .learn-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      text-align: center;
+      transition: all 0.35s;
+      cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .learn-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--neon-dim), transparent);
+      opacity: 0; transition: opacity 0.3s;
+      border-radius: var(--radius);
+    }
+    .learn-card:hover::before { opacity: 1; }
+    .learn-card:hover {
+      border-color: rgba(0,200,255,0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,200,255,0.12);
+    }
+    .learn-card-icon { font-size: 36px; margin-bottom: 14px; display: block; }
+    .learn-card h4 {
+      font-family: var(--font-display); font-size: 13px;
+      font-weight: 600; color: var(--white); letter-spacing: 0.5px;
+      position: relative; z-index: 1;
+    }
+    .learn-card .learn-tag {
+      display: inline-block; margin-top: 10px;
+      background: rgba(0,200,255,0.1); color: var(--neon);
+      font-size: 10px; padding: 3px 10px; border-radius: 50px;
+      font-weight: 600; letter-spacing: 0.5px;
+      position: relative; z-index: 1;
+    }
+
+    /* ── FOR WHO ── */
+    #for-who {
+      background: linear-gradient(180deg, var(--black2) 0%, var(--black) 100%);
+      position: relative;
+    }
+    .for-who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .for-who-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,215,0,0.12);
+      border-radius: var(--radius);
+      padding: 30px 26px;
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: all 0.3s;
+    }
+    .for-who-card:hover {
+      border-color: rgba(255,215,0,0.4);
+      background: rgba(255,215,0,0.03);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(255,215,0,0.08);
+    }
+    .checkmark {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--gold), #CC8A00);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+      margin-top: 2px;
+    }
+    .for-who-card h4 { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .for-who-card p { color: var(--gray-light); font-size: 14px; line-height: 1.6; }
+
+    /* ── INCLUDED ── */
+    #included { background: var(--black3); position: relative; }
+    .included-wrapper {
+      max-width: 800px; margin: 0 auto;
+    }
+    .glass-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,200,255,0.2);
+      border-radius: 24px;
+      padding: 48px 52px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 60px rgba(0,200,255,0.06), inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .included-list { display: flex; flex-direction: column; gap: 20px; }
+    .included-item {
+      display: flex; align-items: center; gap: 20px;
+      padding: 20px 24px;
+      background: rgba(0,200,255,0.04);
+      border: 1px solid rgba(0,200,255,0.1);
+      border-radius: 14px;
+      transition: all 0.3s;
+    }
+    .included-item:hover {
+      background: rgba(0,200,255,0.08);
+      border-color: rgba(0,200,255,0.25);
+      transform: translateX(6px);
+    }
+    .included-icon { font-size: 32px; flex-shrink: 0; }
+    .included-info h4 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .included-info p { color: var(--gray-light); font-size: 14px; }
+    .included-badge {
+      margin-left: auto; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--neon), #0088BB);
+      color: var(--black); font-size: 11px; font-weight: 700;
+      padding: 5px 14px; border-radius: 50px; white-space: nowrap;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: linear-gradient(180deg, var(--black) 0%, var(--black2) 100%); position: relative; }
+    .disclaimer-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,165,0,0.1); border: 1px solid rgba(255,165,0,0.3);
+      color: #FFA500; font-size: 12px; font-weight: 600;
+      padding: 8px 16px; border-radius: 50px;
+      margin-bottom: 48px;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 30px 26px;
+      transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .testi-card::before {
+      content: '"'; position: absolute; top: -10px; left: 20px;
+      font-size: 120px; color: rgba(0,200,255,0.06);
+      font-family: Georgia, serif; line-height: 1; pointer-events: none;
+    }
+    .testi-card:hover {
+      border-color: rgba(0,200,255,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,200,255,0.08);
+    }
+    .stars { color: var(--gold); font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+    .testi-text { color: var(--gray-light); font-size: 15px; line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+    .testi-author { display: flex; gap: 14px; align-items: center; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--neon-dim), rgba(255,215,0,0.2));
+      border: 2px solid rgba(0,200,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: var(--neon);
+      font-family: var(--font-display); flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: 15px; color: var(--white); }
+    .testi-role { font-size: 12px; color: var(--gray); }
+
+    /* ── GUARANTEE ── */
+    #guarantee {
+      background: var(--black3); position: relative; overflow: hidden;
+    }
+    .guarantee-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(0,200,255,0.05), transparent 70%);
+    }
+    .guarantee-box {
+      max-width: 700px; margin: 0 auto; text-align: center;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,200,255,0.2);
+      border-radius: 24px; padding: 52px 48px;
+      backdrop-filter: blur(20px);
+      position: relative; z-index: 1;
+      box-shadow: 0 0 80px rgba(0,200,255,0.06);
+    }
+    .guarantee-shield { font-size: 72px; margin-bottom: 24px; display: block;
+      filter: drop-shadow(0 0 20px rgba(0,200,255,0.5));
+      animation: shieldGlow 3s ease-in-out infinite;
+    }
+    @keyframes shieldGlow {
+      0%,100%{ filter: drop-shadow(0 0 20px rgba(0,200,255,0.5)); }
+      50%    { filter: drop-shadow(0 0 40px rgba(0,200,255,0.9)); }
+    }
+    .guarantee-title {
+      font-family: var(--font-display); font-size: 32px; font-weight: 700;
+      color: var(--neon); margin-bottom: 16px;
+    }
+    .guarantee-text { color: var(--gray-light); font-size: 17px; line-height: 1.7; max-width: 500px; margin: 0 auto; }
+
+    /* ── FAQ ── */
+    #faq { background: linear-gradient(180deg, var(--black2) 0%, var(--black) 100%); }
+    .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-sm);
+      overflow: hidden; transition: border-color 0.3s;
+    }
+    .faq-item.open { border-color: rgba(0,200,255,0.3); }
+    .faq-question {
+      width: 100%; background: none; border: none; color: var(--white);
+      font-family: var(--font-body); font-size: 16px; font-weight: 600;
+      padding: 22px 24px; text-align: left; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .faq-arrow {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: rgba(0,200,255,0.1); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--neon); font-size: 14px;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s;
+      color: var(--gray-light); font-size: 15px; line-height: 1.7;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding: 0 24px 22px; }
+
+    /* ── CTA FINAL ── */
+    #cta-final {
+      background: var(--black3); position: relative; overflow: hidden;
+    }
+    .cta-final-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(0,200,255,0.08), transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(255,215,0,0.06), transparent 50%);
+    }
+    .cta-final-border {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(0,200,255,0.06) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0,200,255,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .cta-final-inner {
+      position: relative; z-index: 1; text-align: center; max-width: 800px; margin: 0 auto;
+    }
+    .cta-final-eyebrow {
+      font-size: 12px; font-family: var(--font-display); letter-spacing: 3px;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 20px;
+    }
+    .cta-final-title {
+      font-family: var(--font-display); font-size: clamp(32px, 5vw, 56px);
+      font-weight: 900; line-height: 1.1; margin-bottom: 24px;
+    }
+    .cta-final-title .gradient {
+      background: linear-gradient(135deg, var(--neon), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cta-final-desc { color: var(--gray-light); font-size: 18px; line-height: 1.7; margin-bottom: 48px; }
+    .price-block { margin-bottom: 40px; }
+    .price-from {
+      font-size: 14px; color: var(--gray); text-decoration: line-through; margin-bottom: 4px;
+    }
+    .price-to {
+      font-family: var(--font-display); font-size: clamp(40px, 6vw, 64px);
+      font-weight: 900; color: var(--gold);
+      text-shadow: 0 0 30px rgba(255,215,0,0.4);
+    }
+    .price-installments { font-size: 14px; color: var(--gray-light); margin-top: 8px; }
+
+    /* ── HOTMART BUTTON ── Replace href="#" with your Hotmart link ── */
+    .btn-hotmart {
+      background: linear-gradient(135deg, #00C8FF 0%, #0088BB 100%);
+      color: var(--black); font-weight: 800; font-size: 18px;
+      padding: 22px 52px; border-radius: 50px; border: none; cursor: pointer;
+      text-decoration: none; letter-spacing: 0.5px;
+      display: inline-block; text-align: center;
+      transition: all 0.3s;
+      box-shadow: 0 6px 40px rgba(0,200,255,0.4);
+      animation: ctaPulse 2.5s ease-in-out infinite;
+    }
+    .btn-hotmart:hover { transform: translateY(-4px); box-shadow: 0 12px 60px rgba(0,200,255,0.6); animation: none; }
+    @keyframes ctaPulse {
+      0%,100%{ box-shadow: 0 6px 40px rgba(0,200,255,0.4); }
+      50%    { box-shadow: 0 6px 60px rgba(0,200,255,0.7); }
+    }
+    .btn-sub { font-size: 13px; color: var(--gray); margin-top: 16px; }
+    .guarantee-mini {
+      display: flex; align-items: center; gap: 10px; justify-content: center;
+      margin-top: 32px; color: var(--gray-light); font-size: 14px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 60px 0 40px;
+    }
+    .footer-inner {
+      display: flex; flex-direction: column; align-items: center; gap: 32px; text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-display); font-size: 22px; font-weight: 700;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--neon); }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; justify-content: center; }
+    .footer-links a {
+      color: var(--gray); font-size: 14px; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--neon); }
+    .footer-copy { color: #444; font-size: 13px; }
+    .footer-disclaimer {
+      color: #333; font-size: 12px; max-width: 600px;
+      line-height: 1.6; text-align: center;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,200,255,0.3), transparent);
+      margin: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-buttons { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { order: -1; }
+      .book-cover { width: 220px; height: 300px; }
+      .book-brain { font-size: 42px; }
+      .book-main-title { font-size: 18px; }
+      .glass-box { padding: 32px 24px; }
+      .guarantee-box { padding: 40px 24px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .hero-desc { max-width: 100%; }
+      nav .nav-cta { display: none; }
+      .btn-hotmart { padding: 18px 36px; font-size: 16px; }
+      .section { padding: 72px 0; }
+    }
+    @media (max-width: 480px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+      .learn-grid { grid-template-columns: repeat(2, 1fr); }
+      .for-who-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background effects -->
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="particles" id="particles" aria-hidden="true"></div>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo">CÓDIGO<span>MASTER</span></div>
+    <!-- ★ SUBSTITUA # PELO SEU LINK HOTMART ★ -->
+    <a href="#" class="nav-cta" target="_blank" rel="noopener">COMPRAR AGORA — R$ 29,90</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content reveal">
+        <div class="hero-badge">
+          🔥 Oferta de lançamento por apenas <strong>R$ 29,90</strong>
+        </div>
+        <h1 class="hero-title">
+          O Código<br>
+          <span class="line2">Master</span>
+        </h1>
+        <p class="hero-subtitle">Descubra 1001 Métodos para Ganhar Dinheiro<br>com Inteligência Artificial.</p>
+        <p class="hero-desc">
+          Aprenda estratégias para criar renda online, automatizar negócios, vender serviços, criar produtos digitais e aproveitar o poder da IA.
+        </p>
+        <div class="hero-buttons">
+          <!-- ★ SUBSTITUA # PELO SEU LINK HOTMART ★ -->
+          <a href="#" class="btn-primary" target="_blank" rel="noopener">QUERO MEU E-BOOK AGORA</a>
+          <a href="#learn" class="btn-secondary">VER O CONTEÚDO</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">1001+</span>
+            <span class="stat-label">Métodos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">1300+</span>
+            <span class="stat-label">Páginas</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Acesso</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="book-wrapper">
+          <div class="book-cover">
+            <div class="book-spine"></div>
+            <div class="book-cover-bg"></div>
+            <div class="book-cover-grid"></div>
+            <div class="book-cover-glow"></div>
+            <div class="book-cover-content">
+              <div>
+                <div class="book-eyebrow">E-BOOK DIGITAL · 2026</div>
+              </div>
+              <div>
+                <div class="book-brain">🧠</div>
+              </div>
+              <div>
+                <div class="book-main-title">
+                  O <span class="highlight">Código</span><br>Master
+                </div>
+                <div class="book-subtitle-cover">
+                  1001 Métodos para Ganhar Dinheiro<br>com Inteligência Artificial
+                </div>
+              </div>
+              <div class="book-bottom-info">
+                <div class="book-pages">+1.300 PÁGINAS</div>
+                <div class="book-price-badge">R$ 29,90</div>
+              </div>
+            </div>
+          </div>
+          <div class="book-glow-orbit"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── BENEFITS ── -->
+<section id="benefits" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Vantagens Exclusivas</p>
+      <h2 class="section-title">Por que o <span class="title-underline">Código Master</span><br>é diferente de tudo</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🎯</div>
+        <div class="benefit-text">
+          <h4>Mais de 1001 Métodos</h4>
+          <p>Um arsenal completo de estratégias para gerar renda com IA, do básico ao avançado.</p>
+        </div>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🗺️</div>
+        <div class="benefit-text">
+          <h4>Passo a Passo</h4>
+          <p>Guias detalhados e práticos que qualquer pessoa pode seguir, mesmo sem experiência.</p>
+        </div>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🛠️</div>
+        <div class="benefit-text">
+          <h4>Ferramentas Recomendadas</h4>
+          <p>Descubra as melhores ferramentas de IA gratuitas e pagas para maximizar seus resultados.</p>
+        </div>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-text">
+          <h4>Estratégias Práticas</h4>
+          <p>Conteúdo direto ao ponto, focado em resultados reais e aplicáveis imediatamente.</p>
+        </div>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🏢</div>
+        <div class="benefit-text">
+          <h4>Negócios Digitais</h4>
+          <p>Aprenda a construir e escalar negócios digitais completos usando o poder da IA.</p>
+        </div>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🤖</div>
+        <div class="benefit-text">
+          <h4>Automações com IA</h4>
+          <p>Automatize tarefas repetitivas, libere seu tempo e ganhe mais trabalhando menos.</p>
+        </div>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌱</div>
+        <div class="benefit-text">
+          <h4>Ideal para Iniciantes</h4>
+          <p>Conteúdo estruturado do zero: você não precisa saber nada sobre IA para começar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── LEARN ── -->
+<section id="learn" class="section">
+  <div class="container">
+    <div class="learn-bg-circle"></div>
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Conteúdo Completo</p>
+      <h2 class="section-title">O que você vai <span class="title-underline">aprender</span></h2>
+      <p class="section-desc">Mais de 1001 métodos organizados em categorias práticas para você começar a aplicar imediatamente.</p>
+    </div>
+    <div class="learn-grid">
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">📣</span>
+        <h4>Marketing Digital</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">🔗</span>
+        <h4>Afiliados</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">⚙️</span>
+        <h4>Automações</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">🏭</span>
+        <h4>IA para Empresas</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">✍️</span>
+        <h4>Criação de Conteúdo</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">🛒</span>
+        <h4>E-commerce</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">💼</span>
+        <h4>Freelancing</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">📦</span>
+        <h4>Produtos Digitais</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">🎯</span>
+        <h4>Funis de Vendas</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">💰</span>
+        <h4>Renda Extra</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal">
+        <span class="learn-card-icon">📈</span>
+        <h4>Escala de Negócios</h4>
+        <span class="learn-tag">+ Métodos</span>
+      </div>
+      <div class="learn-card reveal" style="background: linear-gradient(135deg, rgba(0,200,255,0.08), rgba(255,215,0,0.05)); border-color: rgba(255,215,0,0.2);">
+        <span class="learn-card-icon">✨</span>
+        <h4>Muito Mais...</h4>
+        <span class="learn-tag" style="background:rgba(255,215,0,0.1);color:var(--gold);">1001 Métodos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FOR WHO ── -->
+<section id="for-who" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Para Quem É</p>
+      <h2 class="section-title">Este e-book foi feito<br><span class="title-underline">para você</span></h2>
+      <p class="section-desc">Se você quer aproveitar o momento mais transformador da história para criar renda com IA, este material é perfeito.</p>
+    </div>
+    <div class="for-who-grid">
+      <div class="for-who-card reveal">
+        <div class="checkmark">✓</div>
+        <div>
+          <h4>Iniciantes</h4>
+          <p>Nunca trabalhou com internet ou IA? Sem problema. O conteúdo começa do zero e te guia passo a passo.</p>
+        </div>
+      </div>
+      <div class="for-who-card reveal">
+        <div class="checkmark">✓</div>
+        <div>
+          <h4>Empreendedores</h4>
+          <p>Quer automatizar seu negócio e escalar resultados sem aumentar custos? Este e-book é essencial.</p>
+        </div>
+      </div>
+      <div class="for-who-card reveal">
+        <div class="checkmark">✓</div>
+        <div>
+          <h4>Afiliados</h4>
+          <p>Use IA para turbinar suas campanhas, criar conteúdo em escala e aumentar suas comissões.</p>
+        </div>
+      </div>
+      <div class="for-who-card reveal">
+        <div class="checkmark">✓</div>
+        <div>
+          <h4>Freelancers</h4>
+          <p>Entregue mais em menos tempo, aumente seu valor no mercado e conquiste mais clientes usando IA.</p>
+        </div>
+      </div>
+      <div class="for-who-card reveal">
+        <div class="checkmark">✓</div>
+        <div>
+          <h4>Criadores de Conteúdo</h4>
+          <p>Produza conteúdo de qualidade em volume, crie roteiros, imagens e estratégias com auxílio da IA.</p>
+        </div>
+      </div>
+      <div class="for-who-card reveal">
+        <div class="checkmark">✓</div>
+        <div>
+          <h4>Quem Quer Ganhar Online</h4>
+          <p>Se o objetivo é criar uma nova fonte de renda usando o que há de mais atual em tecnologia, você chegou ao lugar certo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── INCLUDED ── -->
+<section id="included" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">O Pacote Completo</p>
+      <h2 class="section-title">O que está <span class="title-underline">incluso</span></h2>
+    </div>
+    <div class="included-wrapper reveal">
+      <div class="glass-box">
+        <div class="included-list">
+          <div class="included-item">
+            <div class="included-icon">📘</div>
+            <div class="included-info">
+              <h4>E-book Completo</h4>
+              <p>Conteúdo estruturado e atualizado sobre ganhar dinheiro com IA</p>
+            </div>
+            <div class="included-badge">INCLUSO</div>
+          </div>
+          <div class="included-item">
+            <div class="included-icon">📄</div>
+            <div class="included-info">
+              <h4>Mais de 1.300 Páginas</h4>
+              <p>Um dos e-books mais completos do mercado sobre o tema</p>
+            </div>
+            <div class="included-badge">INCLUSO</div>
+          </div>
+          <div class="included-item">
+            <div class="included-icon">🧠</div>
+            <div class="included-info">
+              <h4>Mais de 1001 Métodos</h4>
+              <p>Estratégias variadas para todos os perfis e objetivos</p>
+            </div>
+            <div class="included-badge">INCLUSO</div>
+          </div>
+          <div class="included-item">
+            <div class="included-icon">📱</div>
+            <div class="included-info">
+              <h4>Acesso Imediato</h4>
+              <p>Após a compra, você recebe o e-book na hora, sem espera</p>
+            </div>
+            <div class="included-badge">INCLUSO</div>
+          </div>
+          <div class="included-item">
+            <div class="included-icon">♾️</div>
+            <div class="included-info">
+              <h4>Atualizações Futuras</h4>
+              <p>Caso o conteúdo seja atualizado, você recebe a nova versão</p>
+            </div>
+            <div class="included-badge">INCLUSO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Avaliações</p>
+      <h2 class="section-title">O que dizem sobre o<br><span class="title-underline">Código Master</span></h2>
+      <div class="disclaimer-badge">
+        ⚠️ Exemplos de layout — substitua pelas suas avaliações reais
+      </div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Comprei sem muita expectativa pelo preço, mas o conteúdo superou tudo que já li sobre o assunto. São centenas de ideias práticas que eu nunca teria pensado sozinho."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Ricardo M.</div>
+            <div class="testi-role">Exemplo de layout</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Como iniciante, estava perdida sobre como usar IA para gerar renda. Depois deste e-book, comecei a aplicar 3 métodos simultaneamente e já vejo resultados."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Ana C.</div>
+            <div class="testi-role">Exemplo de layout</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Trabalho como freelancer há anos e este material me mostrou como automatizar boa parte do meu trabalho usando IA. A economia de tempo foi absurda."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">F</div>
+          <div>
+            <div class="testi-name">Felipe T.</div>
+            <div class="testi-role">Exemplo de layout</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Tenho um negócio local e não imaginava como a IA poderia me ajudar. Hoje automatizo marketing, atendimento e criação de conteúdo. Resultado: mais tempo e mais vendas."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Mariana S.</div>
+            <div class="testi-role">Exemplo de layout</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Impressionante a quantidade de conteúdo. São mais de mil métodos organizados de forma clara. Já implementei vários e cada um abriu portas que eu não imaginava existir."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">G</div>
+          <div>
+            <div class="testi-name">Gustavo P.</div>
+            <div class="testi-role">Exemplo de layout</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Um e-book que vale muito mais do que cobra. A profundidade do conteúdo sobre criação de produtos digitais com IA mudou completamente minha visão de negócio."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">L</div>
+          <div>
+            <div class="testi-name">Larissa N.</div>
+            <div class="testi-role">Exemplo de layout</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── GUARANTEE ── -->
+<section id="guarantee" class="section">
+  <div class="container">
+    <div class="guarantee-bg"></div>
+    <div class="guarantee-box reveal">
+      <span class="guarantee-shield">🛡️</span>
+      <div class="guarantee-title">Garantia de 7 Dias</div>
+      <p class="guarantee-text">
+        Sua compra é 100% segura. Se por qualquer motivo você não ficar satisfeito com o conteúdo nos primeiros <strong>7 dias</strong>, devolvemos todo o seu dinheiro — sem perguntas, sem burocracia. Zero risco para você.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FAQ ── -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Dúvidas Frequentes</p>
+      <h2 class="section-title">Perguntas <span class="title-underline">Frequentes</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Como recebo o e-book?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          Após a confirmação do pagamento, você recebe o acesso ao e-book diretamente no e-mail cadastrado ou pela plataforma Hotmart, de forma automática e imediata.
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          O acesso é imediato?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          Sim! Assim que seu pagamento for confirmado, você recebe o e-book na hora, podendo começar a ler imediatamente em qualquer dispositivo.
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Funciona para iniciantes?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          Absolutamente. O e-book foi estruturado para atender tanto iniciantes quanto pessoas com mais experiência. O conteúdo vai do básico ao avançado, com linguagem acessível e passo a passo detalhado.
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Preciso aparecer ou me expor nas redes sociais?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          Não necessariamente. Muitos dos métodos apresentados no e-book podem ser aplicados de forma anônima, sem precisar aparecer em vídeos ou nas redes sociais.
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quanto tempo tenho de acesso?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          O acesso ao e-book é vitalício. Você pode ler, reler e consultar o material quando quiser, para sempre, sem mensalidades ou renovações.
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Posso acessar pelo celular?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          Sim! O e-book está disponível em formato digital compatível com qualquer dispositivo — smartphone, tablet, computador ou e-reader. Leia onde e quando quiser.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CTA FINAL ── -->
+<section id="cta-final" class="section">
+  <div class="cta-final-bg"></div>
+  <div class="cta-final-border"></div>
+  <div class="container">
+    <div class="cta-final-inner reveal">
+      <p class="cta-final-eyebrow">⚡ Oferta de Lançamento</p>
+      <h2 class="cta-final-title">
+        Comece <span class="gradient">Hoje Mesmo</span>
+      </h2>
+      <p class="cta-final-desc">
+        Pare de perder oportunidades. Descubra centenas de estratégias para transformar a Inteligência Artificial em novas possibilidades de renda.
+      </p>
+      <div class="price-block">
+        <div class="price-from">De R$ 297,00</div>
+        <div class="price-to">R$ 29,90</div>
+        <div class="price-installments">Pagamento único · Acesso imediato · Sem mensalidades</div>
+      </div>
+      <!-- ★ SUBSTITUA # PELO SEU LINK HOTMART ★ -->
+      <a href="#" class="btn-hotmart" target="_blank" rel="noopener">
+        COMPRAR AGORA POR R$ 29,90
+      </a>
+      <div class="btn-sub">🔒 Pagamento 100% seguro · Processado pela Hotmart</div>
+      <div class="guarantee-mini">
+        🛡️ <span>Garantia de 7 dias ou seu dinheiro de volta</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">CÓDIGO<span>MASTER</span></div>
+      <nav class="footer-links" aria-label="Links do rodapé">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Contato</a>
+      </nav>
+      <p class="footer-copy">Copyright © 2026 O Código Master. Todos os direitos reservados.</p>
+      <p class="footer-disclaimer">
+        Este produto é um e-book digital entregue em formato PDF. Os resultados mencionados podem variar de pessoa para pessoa e dependem do esforço individual de cada um. Não garantimos renda específica ou resultados financeiros.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── PARTICLES ──
+  (function() {
+    const container = document.getElementById('particles');
+    const count = window.innerWidth < 768 ? 20 : 40;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.cssText = `
+        left: ${Math.random() * 100}%;
+        --dur: ${6 + Math.random() * 8}s;
+        --delay: ${Math.random() * 8}s;
+        --drift: ${(Math.random() - 0.5) * 80}px;
+        opacity: 0;
+        width: ${1 + Math.random() * 2}px;
+        height: ${1 + Math.random() * 2}px;
+        background: ${Math.random() > 0.6 ? '#FFD700' : '#00C8FF'};
+      `;
+      container.appendChild(p);
+    }
+  })();
+
+  // ── SCROLL REVEAL ──
+  (function() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  })();
+
+  // ── FAQ ──
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+    btn.setAttribute('aria-expanded', !isOpen);
+  }
+
+  // ── NAV SCROLL STYLE ──
+  (function() {
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 60
+        ? 'rgba(11,11,11,0.95)'
+        : 'rgba(11,11,11,0.85)';
+    }, { passive: true });
+  })();
+</script>
+</body>
+</html>
